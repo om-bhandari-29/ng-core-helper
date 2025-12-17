@@ -2,6 +2,10 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.6.
 
+## Tools
+* Reactive form validator
+* Numbers only validator (Use in input where type is text or string)
+
 ## Install the package
 
 Install package using npm
@@ -10,6 +14,7 @@ Install package using npm
 npm i ng-core-helpers
 ```
 
+* Reactive form validator
 ## Create Ng Reactive Form
 
 ```bash
@@ -39,6 +44,20 @@ npm i ng-core-helpers
   minlength="3"
   maxlength="15"
   libValidateNgReactiveForm
+/>
+
+```
+
+* Numbers only validator (Use in input where type is text or string)
+## Use in HTML
+```bash
+<input
+  class="w-full"
+  type="text"
+  formControlName="contact"
+  minlength="3"
+  maxlength="15"
+  libNumberOnlyDirective
 />
 
 ```
