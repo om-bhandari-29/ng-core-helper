@@ -2,58 +2,43 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.6.
 
-## Development server
+## Install the package
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Install package using npm
 
 ```bash
-ng generate component component-name
+npm i ng-core-helpers
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Create Ng Reactive Form
 
 ```bash
-ng generate --help
+  public employeeForm = new FormGroup<IEmployeeForm>({
+    id: new FormControl(0),
+    firstName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+    lastName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+    email: new FormControl('', [Validators.required, patternWithMessage(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Please enter a valid email address (e.g. example@domain.com).')]),
+    contact: new FormControl('', [Validators.required, patternWithMessage(/^[6-9]\d{9}$/, 'Please enter a valid contact number.')]),
+    userType: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required,  Validators.maxLength(70)]),
+    username: new FormControl(null, [Validators.minLength(3), Validators.maxLength(30)]),
+    password: new FormControl(null, [Validators.minLength(8), Validators.maxLength(8)]),
+    isLogin: new FormControl(false),
+  });
 ```
 
-## Building
-
-To build the project run:
+## Use in HTML
 
 ```bash
-ng build
+<input
+  class="w-full border border-slate-300 rounded-[5px] px-3 py-2 pl-10 pr-10 text-sm text-gray-800 placeholder-slate-400
+         focus:ring-[#82181A] focus:outline-none focus:border-[#82181A] transition duration-200 text-base"
+  type="text"
+  placeholder="Enter first name"
+  formControlName="firstName"
+  minlength="3"
+  maxlength="15"
+  libValidateNgReactiveForm
+/>
+
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

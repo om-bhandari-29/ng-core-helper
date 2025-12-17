@@ -3,5 +3,31 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "ng-core-helpers": {
+      "projectType": "library",
+      "root": "projects/ng-core-helpers",
+      "sourceRoot": "projects/ng-core-helpers/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-core-helpers/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-core-helpers/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/ng-core-helpers/tsconfig.spec.json"
+          }
+        }
+      }
+    }
   }
 }
